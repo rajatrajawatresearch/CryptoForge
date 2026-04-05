@@ -1,0 +1,45 @@
+[app]
+mode = "testnet"                      # testnet / paper / live
+log_level = "INFO"
+
+[exchange]
+base_url = "https://cdn-ind.testnet.deltaex.org"
+ws_url = "wss://socket.india.delta.exchange"
+prod_url = "https://api.india.delta.exchange"
+
+[risk]
+max_capital = 10000
+max_leverage = 5
+max_position_pct = 20.0
+daily_loss_limit_pct = 5.0
+max_open_orders = 30
+
+[strategies.grid]
+enabled = true
+symbol = "BTCUSD"
+product_id = 84                       # BTC perpetual on Delta India
+upper_price = 95000.0
+lower_price = 85000.0
+num_grids = 10
+quantity_per_grid = 0.001             # 0.001 BTC per grid
+leverage = 3
+
+[strategies.scalper]
+enabled = false
+symbols = ["BTCUSD", "ETHUSD"]
+oir_threshold = 0.6
+cooldown_seconds = 30
+sl_spread_multiplier = 3.0
+rr_ratio = 1.5
+
+[strategies.tri_arb]
+enabled = false
+fee_pct = 0.05
+
+[strategies.funding]
+enabled = false
+min_annualized_rate = 20.0
+
+[telegram]
+enabled = true
+signals_channel = ""                  # public channel for signals

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cryptoforge"
+version = "0.1.0"
+description = "AI-powered crypto trading bot for Delta Exchange India"
+requires-python = ">=3.12"
+dependencies = [
+    "delta-rest-client>=1.0.13",
+    "websocket-client>=1.8",
+    "aiohttp>=3.9",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+cryptoforge = "cryptoforge.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cryptoforge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
